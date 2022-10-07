@@ -7,8 +7,9 @@
     android:orientation="vertical"
     tools:context=".SecondTask">
     <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
         <View
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -26,8 +27,9 @@
             android:background="#0000ff" />
     </TableRow>
     <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
         <View
             android:layout_width="100dp"
             android:layout_height="100dp"

@@ -7,29 +7,33 @@
     tools:context=".FirstTask">
 
     <View
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/view11"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#ff0000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#ff0000"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <View
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
+        android:id="@+id/view12"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:background="#00ff00"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/view11"
+        app:layout_constraintStart_toEndOf="@id/view11"
+        app:layout_constraintTop_toBottomOf="@id/view11" />
 
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="150dp"
+        android:id="@+id/view13"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:background="#0000ff"
+        app:layout_constraintBottom_toTopOf="@id/view12"
+        app:layout_constraintEnd_toEndOf="@id/view12"
+        app:layout_constraintStart_toEndOf="@id/view12"
+        app:layout_constraintTop_toTopOf="@id/view12"
         android:text="Квадрат"
         android:gravity="center"
         android:textColor="#ffffff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="32sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
