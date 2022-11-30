@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragment"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/button_to_task1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To task 1"/>
+    <Button
+        android:id="@+id/button_to_task2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To task 2"/>
+    <Button
+        android:id="@+id/button_to_task3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To task 3"/>
+    <Button
+        android:id="@+id/button_to_task4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To task 4"/>
+    <Button
+        android:id="@+id/button_to_task5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To task 5"/>
+    <Button
+        android:id="@+id/button_to_task6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To task 6"/>
+    <Button
+        android:id="@+id/button_to_task7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To task 7"/>
+</LinearLayout>
