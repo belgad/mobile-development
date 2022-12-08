@@ -30,19 +30,22 @@ class Task6Fragment : Fragment() {
             } else {
                 timer.scheduleAtFixedRate(object : TimerTask() {
                     override fun run() {
-                        time += 0.011
+                        time += 1
                         val timeInt: Int = time.toInt()
                         val h: Int = timeInt / 3600
                         val m: Int = timeInt % 3600 / 60
                         val s: Int = timeInt % 60
-                        val ms: Int = (time * 1000).toInt() % 1000
-                        if (timerStarted)
+                        if (timerStarted) {
+                            if (timeInt % 60 == 0) binding.task6Hour.rotation += 0.5f
+                            if (timeInt % 12 == 0) binding.task6Minute.rotation +=0.5f
+                            binding.task6Second.rotation += 6f
                             requireActivity().runOnUiThread {
                                 binding.task6Textview.text =
-                                    String.format("%02d:%02d:%02d.%03d", h, m, s, ms)
+                                    String.format("%02d:%02d:%02d", h, m, s)
                             }
+                        }
                     }
-                }, 0, 11)
+                }, 0, 1000)
                 binding.task6StartStopButton.text = "Stop"
                 timerStarted = true
             }
@@ -55,7 +58,26 @@ class Task6Fragment : Fragment() {
                 binding.task6StartStopButton.text = "Start"
             }
             time = 0.0
-            requireActivity().runOnUiThread { binding.task6Textview.text = "00:00:00.000" }
+            binding.task6Hour.rotation = 0f
+            binding.task6Minute.rotation = 0f
+            binding.task6Second.rotation = 0f
+            requireActivity().runOnUiThread { binding.task6Textview.text = "00:00:00" }
+        }
+
+        binding.task6Hour.viewTreeObserver.addOnDrawListener {
+            with (binding.task6Hour) {
+                pivotY = measuredHeight.toFloat()
+            }
+        }
+        binding.task6Minute.viewTreeObserver.addOnDrawListener {
+            with (binding.task6Minute) {
+                pivotY = measuredHeight.toFloat()
+            }
+        }
+        binding.task6Second.viewTreeObserver.addOnDrawListener {
+            with (binding.task6Second) {
+                pivotY = measuredHeight.toFloat()
+            }
         }
 
         return binding.root

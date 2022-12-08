@@ -30,4 +30,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/task6_textview"
         android:text="Reset"/>
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/task6_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="task6_start_stop_button,task6_reset_button"/>
+    <View
+        android:id="@+id/task6_hour"
+        android:layout_width="8sp"
+        android:layout_height="80sp"
+        android:background="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task6_barrier"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <View
+        android:id="@+id/task6_minute"
+        android:layout_width="4sp"
+        android:layout_height="128sp"
+        android:background="#000000"
+        app:layout_constraintStart_toStartOf="@id/task6_hour"
+        app:layout_constraintEnd_toEndOf="@id/task6_hour"
+        app:layout_constraintBottom_toBottomOf="@id/task6_hour"/>
+    <View
+        android:id="@+id/task6_second"
+        android:layout_width="1sp"
+        android:layout_height="144sp"
+        android:background="#ff0000"
+        app:layout_constraintStart_toStartOf="@id/task6_hour"
+        app:layout_constraintEnd_toEndOf="@id/task6_hour"
+        app:layout_constraintBottom_toBottomOf="@id/task6_hour"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,4 +25,8 @@
             android:layout_height="wrap_content"
             android:text="Boolean setting"/>
     </LinearLayout>
+    <ListView
+        android:id="@+id/task7_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -30,7 +30,7 @@ class Task3Fragment : Fragment() {
         )
         animator.duration = 2000
 
-        binding.root.setOnTouchListener { _, event ->
+        binding.task3Textview.setOnTouchListener { _, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
                     if (!animator.isRunning) {
