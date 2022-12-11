@@ -1,13 +1,14 @@
 package com.example.lab8
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
+import android.annotation.SuppressLint
+import android.graphics.*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.setMargins
 import androidx.fragment.app.Fragment
 import com.example.lab8.databinding.FragmentTask1Binding
@@ -34,20 +35,39 @@ class Task1Fragment : Fragment() {
     private inner class CanvasView : View(requireContext()) {
         private val paint: Paint = Paint().apply { isAntiAlias = true }
         private val path: Path = Path()
+        private lateinit var sun: Bitmap
+        private val colorFilter: PorterDuffColorFilter = PorterDuffColorFilter(Color.parseColor("#FFFF00"), PorterDuff.Mode.SRC_IN)
+        private lateinit var rotateMatrix: Matrix
+        private var degrees: Int = 0
+        private var flag: Boolean = false
 
+        @SuppressLint("DrawAllocation")
         override fun onDraw(canvas: Canvas) {
             super.onDraw(canvas)
 
             val width: Float = width.toFloat()
             val height: Float = height.toFloat()
 
+            if (!flag) {
+                sun = with(ResourcesCompat.getDrawable(resources, R.drawable.sun, null)!!) {
+                val size: Int = width.toInt() / 4
+                    toBitmap(size, size)
+                }
+                flag = true
+            }
+
+            rotateMatrix = Matrix().apply{
+                postRotate(degrees.toFloat(), width / 8, width / 8)
+                postTranslate(width.toFloat() * 3 / 4, 0F)
+            }
+
             paint.color = Color.CYAN
-            canvas.drawRect(0f, 0f, width, height * 2 / 3, paint)
+            canvas.drawRect(0F, 0F, width, height * 2 / 3, paint)
 
             paint.color = Color.GREEN
-            canvas.drawRect(0f, height * 2 / 3, width, height, paint)
+            canvas.drawRect(0F, height * 2 / 3, width, height, paint)
 
-            paint.color = Color.parseColor("#ffa500")
+            paint.color = Color.parseColor("#FFA500")
             canvas.drawRect(width / 3, height / 2, width * 2 / 3, height * 3 / 4, paint)
 
             paint.color = Color.RED
@@ -62,6 +82,14 @@ class Task1Fragment : Fragment() {
                 canvas.drawPath(path, paint)
                 reset()
             }
+
+            paint.colorFilter = colorFilter
+            canvas.drawBitmap(sun, rotateMatrix, paint)
+            paint.colorFilter = null
+
+            degrees += 1
+
+            invalidate()
         }
     }
 }
